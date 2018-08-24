@@ -3,10 +3,13 @@ package com.bank.app.SpringHateOs.test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn; 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resources;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,14 +24,14 @@ public class BankController {
 	@Autowired
 	BankServiceImpl service;
 
-	@RequestMapping("/view")
+	@RequestMapping(value="/view" ,method=RequestMethod.GET,produces=MediaType.ALL_VALUE)
 	public List<Customer> viewAll() {
 		System.out.println(service.viewAll());
 		return service.viewAll();
 	}
 	
 
-	@SuppressWarnings("rawtypes")
+	
 	@RequestMapping(value="/view/{start}/{count}",method=RequestMethod.GET)
 	public Resources getCustomerByPages(@PathVariable int start,@PathVariable int count) {
 		
