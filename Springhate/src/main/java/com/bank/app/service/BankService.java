@@ -10,6 +10,6 @@ public interface BankService {
 	
 	public List<Customer> viewAll();
 	public void addNewCustomer(Customer customer);
-	public Optional<Customer> getCustomerById(String id) ;
-	public void updateCustomerId(Customer customer,String customerId) ;
+	public Optional<Customer> getCustomerById(int id) ;
+	public void updateCustomerId(Customer customer,int customerId) ;
 }
